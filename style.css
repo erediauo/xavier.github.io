@@ -1,0 +1,382 @@
+/* ===============================
+   GLOBAL RESET & BASE
+================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #0f0f0f, #1b1b1b);
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ===============================
+   NAVIGATION (ALL PAGES)
+================================ */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(20,20,20,0.85);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 22px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: #444;
+}
+
+nav a.active {
+    background: #6c00ff;
+}
+
+/* ===============================
+   TYPOGRAPHY
+================================ */
+
+h1, h2 {
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+p {
+    max-width: 700px;
+    margin: 10px auto;
+    text-align: center;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fade 1.2s ease forwards;
+}
+
+/* ===============================
+   HOME PAGE (PHOTO STRIP)
+================================ */
+
+.photo-strip {
+    width: 100%;
+    overflow: hidden;
+    margin: 30px 0 40px;
+}
+
+.photo-track {
+    display: flex;
+    gap: 20px;
+    animation: scroll 40s linear infinite;
+}
+
+.photo-track img {
+    width: 160px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.photo-track img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(160, 80, 255, 0.7);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ===============================
+   LOGO (HOME)
+================================ */
+
+.logo {
+    width: 280px;
+    margin-top: 20px;
+    transition: transform 0.5s, filter 0.5s;
+    filter: drop-shadow(0 0 20px rgba(120, 0, 255, 0.5));
+}
+
+.logo:hover {
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 40px rgba(160, 80, 255, 0.8));
+}
+
+/* ===============================
+   JOIN PAGE
+================================ */
+
+.container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 32px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+form {
+    margin-top: 25px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid #6c00ff;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: #6c00ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.construction {
+    margin-top: 22px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ===============================
+   STORE PAGE
+================================ */
+
+.store-container {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
+}
+
+.category-card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 46px 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
+    transition: 0.4s ease;
+    position: relative;
+    cursor: not-allowed;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 35px rgba(140,60,255,0.6);
+}
+
+.category-title {
+    font-size: 1.35rem;
+    font-weight: bold;
+}
+
+.category-sub {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+.tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* ===============================
+   ARTISTS PAGE
+================================ */
+
+.page-header {
+    text-align: center;
+    margin: 50px 20px 10px;
+}
+
+.grid-container {
+    display: grid;
+    margin: 40px auto 70px;
+    padding: 0 20px;
+    max-width: 1200px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
+}
+
+.artist-card {
+    background: rgba(255,255,255,0.08);
+    padding: 26px 22px;
+    border-radius: 14px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transition: 0.35s ease;
+    position: relative;
+}
+
+.artist-card.active:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 0 25px rgba(140,60,255,0.7);
+}
+
+.artist-card.inactive {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.artist-name {
+    font-size: 1.35rem;
+    font-weight: bold;
+}
+
+.artist-tag {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.construction-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+    nav a {
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+}
+/* ===============================
+   XOBE ARTIST PAGE
+================================ */
+
+/* Content wrapper */
+.section {
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Override global paragraph spacing slightly */
+.section p {
+    max-width: 750px;
+    margin: 15px auto;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* Artwork grid */
+.art-grid {
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.art-grid img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.art-grid img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(160, 80, 255, 0.7);
+}
+
+/* Project description box */
+.project-box {
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 35px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
